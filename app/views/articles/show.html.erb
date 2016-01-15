@@ -1,0 +1,42 @@
+<h1> <%= @article.title %> </h1>
+
+<p>
+
+	<%= @article.text %>
+
+</p>
+
+<p>
+	<a href="/articles">Show all articles</a> |
+	<%= link_to 'Show all articles', articles_path   %>
+</p>
+
+<% @article.comments.each do |comment| %>
+
+<p> 
+
+	<i> <%= comment.author %> said:</i><br />
+	<%= comment.body %> <br />
+
+	
+
+</p>
+<% end %>
+<p>
+	<%= form_for([@article, @article.comments.build])  do |f| %> 
+		
+		<p>
+			<%= f.label :author %><br />
+			<%= f.text_field :author %>
+		</p>
+		<p>
+			<%= f.label :body %><br />
+			<%= f.text_area :body %>
+		</p>
+		<p>
+			<%= f.submit  %><br />
+		</p>
+
+	<%end%>
+
+</p>
