@@ -8,9 +8,13 @@
 </head>
 <body>
 
+	<% if user_signed_in? %>
+	<%= link_to 'Sign Out!', destroy_user_session_path, method: :delete %>  <!-- <a href="/users/sign_out" data-method = delete>Sign out</a> -->
+	<% else %>
 	<%= link_to 'Sign In!', new_user_session_path %> |  <!-- Можно дать такую ссылку - <a href="/users/sign_in">Sign In</a>, параметр new_user_session_path(Helper for Devise) взят из списка маршрутов -->
 	<%= link_to 'Sign Up!', new_user_registration_path %> |  <!-- <a href="/users/sign_up">Sign Up</a> --> 
-	<%= link_to 'Sign Out!', destroy_user_session_path, method: :delete %>  <!-- <a href="/users/sign_out" data-method = delete>Sign out</a> -->
+	<% end %>
+
 	<p class="notice"><%= notice %></p>
 	<p class="alert"><%= alert %></p>
 
