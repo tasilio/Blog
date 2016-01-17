@@ -12,18 +12,22 @@
 </head>
 <body>
 	<div class="container">
-		<div class="row">	
-			<div class="col-xs-10"></div>
-			<div class="col-xs-2">
-				<% if user_signed_in? %>
-				Hello, <%= current_user.username %>
-				<%= link_to 'Sign Out!', destroy_user_session_path, method: :delete %>  <!-- <a href="/users/sign_out" data-method = delete>Sign out</a> -->
-				<% else %>
-				<%= link_to 'Sign In!', new_user_session_path %> |  <!-- Можно дать такую ссылку - <a href="/users/sign_in">Sign In</a>, параметр new_user_session_path(Helper for Devise) взят из списка маршрутов -->
-				<%= link_to 'Sign Up!', new_user_registration_path %> |  <!-- <a href="/users/sign_up">Sign Up</a> --> 
-				<% end %>
-			</div>	
-		</div>
+		<nav class="navbar navbar-default">	
+			<div class="container-fluid">	
+				<a class="navbar-brand" href="/articles">Blog</a> 
+				<ul class="nav navbar-nav navbar-right">
+					<% if user_signed_in? %>
+					<li><p class="navbar-text">Hello, <%= current_user.username %></p></li>
+					<li><%= link_to 'Sign Out!', destroy_user_session_path, method: :delete %> </li>  <!-- <a href="/users/sign_out" data-method = delete>Sign out</a> -->
+					<% else %>
+					<li><%= link_to 'Sign In!', new_user_session_path %> </li>  <!-- Можно дать такую ссылку - <a href="/users/sign_in">Sign In</a>, параметр new_user_session_path(Helper for Devise) взят из списка маршрутов -->
+					<li><%= link_to 'Sign Up!', new_user_registration_path %> </li>  <!-- <a href="/users/sign_up">Sign Up</a> --> 
+					<% end %>
+				</ul>
+			</div>
+		</nav>
+
+		
 		<p class="notice"><%= notice %></p>
 		<p class="alert"><%= alert %></p>
 
