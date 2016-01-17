@@ -5,21 +5,29 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   <script data-require="jquery@*" data-semver="2.1.4" src="https://code.jquery.com/jquery-2.1.4.js"></script>
+   <script data-require="bootstrap@*" data-semver="3.3.6" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+   <link data-require="bootstrap-css@3.3.6" data-semver="3.3.6" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" />
 </head>
 <body>
+	<div class="container">
+		<div class="row">	
+			<div class="col-xs-10"></div>
+			<div class="col-xs-2">
+				<% if user_signed_in? %>
+				Hello, <%= current_user.username %>
+				<%= link_to 'Sign Out!', destroy_user_session_path, method: :delete %>  <!-- <a href="/users/sign_out" data-method = delete>Sign out</a> -->
+				<% else %>
+				<%= link_to 'Sign In!', new_user_session_path %> |  <!-- Можно дать такую ссылку - <a href="/users/sign_in">Sign In</a>, параметр new_user_session_path(Helper for Devise) взят из списка маршрутов -->
+				<%= link_to 'Sign Up!', new_user_registration_path %> |  <!-- <a href="/users/sign_up">Sign Up</a> --> 
+				<% end %>
+			</div>	
+		</div>
+		<p class="notice"><%= notice %></p>
+		<p class="alert"><%= alert %></p>
 
-	<% if user_signed_in? %>
-	Hello, <%= current_user.username %>
-	<%= link_to 'Sign Out!', destroy_user_session_path, method: :delete %>  <!-- <a href="/users/sign_out" data-method = delete>Sign out</a> -->
-	<% else %>
-	<%= link_to 'Sign In!', new_user_session_path %> |  <!-- Можно дать такую ссылку - <a href="/users/sign_in">Sign In</a>, параметр new_user_session_path(Helper for Devise) взят из списка маршрутов -->
-	<%= link_to 'Sign Up!', new_user_registration_path %> |  <!-- <a href="/users/sign_up">Sign Up</a> --> 
-	<% end %>
-
-	<p class="notice"><%= notice %></p>
-	<p class="alert"><%= alert %></p>
-
-<%= yield %>
-
+		<%= yield %>
+	</div>
 </body>
 </html>
