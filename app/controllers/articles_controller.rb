@@ -5,6 +5,7 @@ class ArticlesController < ApplicationController
 	def index
 
 		@articles = Article.all
+		@user = current_user
 		
 	end
 
@@ -16,10 +17,12 @@ class ArticlesController < ApplicationController
 	end
 
 	def new
+		
 	end
 	
 	def create
 		@article = Article.new (article_params)
+		@article[:username] = current_user.username
 		if @article.save
 			redirect_to @article
 		else
