@@ -1,4 +1,6 @@
 class Article < ActiveRecord::Base
+	validates :title, length: { maximum: 140 }
+	validates :text, length: { maximum: 400 }
 	validates :text, presence: true
 	validates :title, presence: true
 	has_many :comments
