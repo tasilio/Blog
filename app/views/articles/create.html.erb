@@ -1,6 +1,6 @@
-<h1> Thank you! </h1>
-<p>Article has been created!!!</p>
+<h1> <%= t('articles.thank_you') %> </h1>
+<p><%= t('articles.created') %></p>
 
-<a href="/articles">Show all articles</a> <br />
+<a href="/articles"><%= t('articles.show_all') %></a> <br />
 
-<%= link_to 'Show all articles', articles_path   %>
+<%= link_to t('articles.show_all'), articles_path   %>

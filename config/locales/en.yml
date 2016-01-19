@@ -23,4 +23,23 @@ en:
   hello: "Hello world"
   contacts:   
     contact_us: "Contact Us!"
+  articles:
+    thank_you: "Thank you!"
+    created: "Article has been created!!!"
+    show_all: "Show all articles"
+    art_destroy: "Article %{par} destroy"
+    edit_h1: "Edit article"
+    title: "Title"
+    text: "Text"
+    edit_button: "Edit article"
+    edit: "Edit"
+    show: "Show"
+    destroy: "Destroy"
+    list_of: "List of articles"
+    new_h1: "New article"
+    save: "Save article"
+    author_said: "%{par} said:"
+    comment_body: "Comment (max 400 symbols):"
+    comment_button: "Save comment"
+
 
